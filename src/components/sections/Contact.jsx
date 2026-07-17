@@ -1,0 +1,136 @@
+import * as React from "react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { Send, CheckCircle } from "lucide-react";
+import { Button } from "../ui/Button";
+import { Input } from "../ui/Input";
+import { Textarea } from "../ui/Textarea";
+import { Section } from "../ui/Section";
+
+const contactSchema = z.object({
+  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
+  email: z.string().email({ message: "Please enter a valid email address." }),
+  message: z.string().min(10, { message: "Message must be at least 10 characters." }),
+});
+
+export default function Contact() {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm({
+    resolver: zodResolver(contactSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      message: "",
+    },
+  });
+
+  const onSubmit = async (data) => {
+    // Simulate API request delay
+    await new Promise((resolve) => setTimeout(resolve, 1500));
+    console.log("Contact form submitted:", data);
+    setIsSubmitted(true);
+    reset();
+  };
+
+  return (
+    <Section 
+      id="contact" 
+      title="Get In Touch" 
+      subtitle="Have a question or want to work together? Drop me a message below."
+      className="max-w-4xl"
+    >
+      <div className="relative border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900/50 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-xl overflow-hidden">
+        {isSubmitted ? (
+          <div className="flex flex-col items-center justify-center py-12 text-center">
+            <CheckCircle size={56} className="text-emerald-500 mb-6" />
+            <h3 className="text-2xl font-bold text-foreground mb-2">Message Sent Successfully!</h3>
+            <p className="text-neutral-600 dark:text-neutral-400 max-w-sm mb-8">
+              Thank you for reaching out. I will get back to you as soon as possible.
+            </p>
+            <Button onClick={() => setIsSubmitted(false)}>
+              Send another message
+            </Button>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-neutral-600 dark:text-neutral-400 mb-2">
+                  Name
+                </label>
+                <Input
+                  id="name"
+                  type="text"
+                  error={errors.name}
+                  {...register("name")}
+                  placeholder="Your Name"
+                />
+                {errors.name && (
+                  <p className="text-red-500 text-xs mt-1.5 pl-1">{errors.name.message}</p>
+                )}
+              </div>
+
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-neutral-600 dark:text-neutral-400 mb-2">
+                  Email
+                </label>
+                <Input
+                  id="email"
+                  type="email"
+                  error={errors.email}
+                  {...register("email")}
+                  placeholder="name@example.com"
+                />
+                {errors.email && (
+                  <p className="text-red-500 text-xs mt-1.5 pl-1">{errors.email.message}</p>
+                )}
+              </div>
+            </div>
+
+            <div>
+              <label htmlFor="message" className="block text-sm font-medium text-neutral-600 dark:text-neutral-400 mb-2">
+                Message
+              </label>
+              <Textarea
+                id="message"
+                rows={5}
+                error={errors.message}
+                {...register("message")}
+                placeholder="What would you like to say..."
+              />
+              {errors.message && (
+                <p className="text-red-500 text-xs mt-1.5 pl-1">{errors.message.message}</p>
+              )}
+            </div>
+
+            <Button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full"
+            >
+              {isSubmitting ? (
+                <>
+                  <div className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin" />
+                  Sending...
+                </>
+              ) : (
+                <>
+                  <Send size={18} />
+                  Send Message
+                </>
+              )}
+            </Button>
+          </form>
+        )}
+      </div>
+    </Section>
+  );
+}
