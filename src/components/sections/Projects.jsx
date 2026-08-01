@@ -57,9 +57,25 @@ const PROJECTS = [
     title: "NakPom",
     description: "A community-focused application designed to strengthen family and local community connections across Cambodia.",
     longDescription: "NakPom is a platform aimed at bridging the gap between family networks in Cambodia, allowing secured family-only communication hubs, community updates, local event planning, and secure messaging workspaces designed to function well even under restricted data bandwidth environments.",
-    tech: ["Figma", "React", "Node.js", "System Design"],
+    tech: ["Figma", "System Design", "Android", "Kotlin", "Jetpack Compose", "MVVM Architecture", "Coroutines", "Hilt"],
     private: true,
     github: null,
+    live: "#"
+  },
+  {
+    title: "ZeroL Launcher",
+    description: "Android App Laucher Built for Minimalist and Grayscaler who love to customize their smartphone.",
+    longDescription: "ZeroL Launcher is a beautifully crafted, highly optimized Android launcher built with Jetpack Compose. Designed for high-performance and power efficiency, it provides a clean, fluid, and distraction-minimized interface, perfectly tuned for 120Hz displays.",
+    tech: ["Android", "Kotlin", "Jetpack Compose", "MVVM Architecture", "Coroutines" ],
+    github: "https://github.com/thangsaoly/ZeroLLauncher.git",
+    live: "#"
+  },
+  {
+    title: "Lofinuous",
+    description: "Lofinuous is a Lo-Fi Radio app. You can play random, continuously Lo-Fi music from Radio Stations. It is an ad-free nusic streamming platform for you to relax and listen while studying.",
+    longDescription: "Lofinuous is a dead-simple, beautifully clean Android app that streams curated lofi radio stations straight to your ears — no ads, no accounts, no nonsense. Just open it, hit play, and you're instantly transported to a cozy coffee shop at 2 AM.",
+    tech: ["Android", "Kotlin", "Jetpack Compose", "MVVM Architecture", "Hilt", "ExoPlayer", "Coroutines"],
+    github: "https://github.com/thangsaoly/Lofinuous.git",
     live: "#"
   }
 ];
@@ -76,12 +92,13 @@ export default function Projects() {
               key={idx}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.02, y: -5 }}
               viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
+              transition={{ delay: idx * 0.1, type: "spring", stiffness: 300 }}
               onClick={() => setSelectedProject(project)}
               className={cn(
                 "group relative rounded-3xl overflow-hidden cursor-pointer transition-all border",
-                "bg-white dark:bg-neutral-900 border-neutral-200 dark:border-white/10 hover:border-primary dark:hover:border-primary"
+                "bg-white dark:bg-neutral-900 border-neutral-200 dark:border-white/10 hover:border-primary/50 dark:hover:border-primary/50 shadow-sm hover:shadow-xl"
               )}
             >
               {/* Image / Card Header Placeholder */}

@@ -2,15 +2,15 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #ffffff;
-  --foreground: #000000;
+  --background: #fafafa; /* softer white */
+  --foreground: #171717; /* softer black */
   --primary: #fbbf24; /* yellow-400 */
   --primary-hover: #f59e0b; /* yellow-500 */
 }
 
 .dark {
-  --background: #000000;
-  --foreground: #ffffff;
+  --background: #0a0a0a; /* dark gray instead of pure black */
+  --foreground: #ededed; /* off-white instead of pure white */
   --primary: #fbbf24;
   --primary-hover: #f59e0b;
 }

@@ -3,7 +3,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Send, CheckCircle } from "lucide-react";
+import { Send, CheckCircle, AlertCircle } from "lucide-react";
+import emailjs from "@emailjs/browser";
 import { Button } from "../ui/Button";
 import { Input } from "../ui/Input";
 import { Textarea } from "../ui/Textarea";
@@ -17,6 +18,7 @@ const contactSchema = z.object({
 
 export default function Contact() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
 
   const {
     register,
@@ -33,11 +35,28 @@ export default function Contact() {
   });
 
   const onSubmit = async (data) => {
-    // Simulate API request delay
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    console.log("Contact form submitted:", data);
-    setIsSubmitted(true);
-    reset();
+    setSubmitError(null);
+    try {
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          from_name: data.name,
+          name: data.name,
+          reply_to: data.email,
+          email: data.email,
+          message: data.message,
+          title: data.message,
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
+      
+      setIsSubmitted(true);
+      reset();
+    } catch (error) {
+      console.error("FAILED...", error);
+      setSubmitError("Something went wrong, please try again later.");
+    }
   };
 
   return (
@@ -110,6 +129,13 @@ export default function Contact() {
                 <p className="text-red-500 text-xs mt-1.5 pl-1">{errors.message.message}</p>
               )}
             </div>
+
+            {submitError && (
+              <div className="flex items-center gap-2 text-red-500 bg-red-500/10 p-3 rounded-xl text-sm">
+                <AlertCircle size={16} />
+                <p>{submitError}</p>
+              </div>
+            )}
 
             <Button
               type="submit"
