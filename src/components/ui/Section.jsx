@@ -6,7 +6,7 @@ export function Section({ id, className, children, title, subtitle }) {
       {(title || subtitle) && (
         <div className="text-center mb-16">
           {title && <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">{title}</h2>}
-          {subtitle && <p className="text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto text-lg">{subtitle}</p>}
+          {subtitle && <p className="text-neutral-400 max-w-2xl mx-auto text-lg">{subtitle}</p>}
         </div>
       )}
       {children}

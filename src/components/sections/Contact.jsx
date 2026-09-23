@@ -66,12 +66,12 @@ export default function Contact() {
       subtitle="Have a question or want to work together? Drop me a message below."
       className="max-w-4xl"
     >
-      <div className="relative border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900/50 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-xl overflow-hidden">
+      <div className="relative border border-neutral-800 bg-neutral-900/50 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-xl overflow-hidden">
         {isSubmitted ? (
           <div className="flex flex-col items-center justify-center py-12 text-center">
             <CheckCircle size={56} className="text-emerald-500 mb-6" />
             <h3 className="text-2xl font-bold text-foreground mb-2">Message Sent Successfully!</h3>
-            <p className="text-neutral-600 dark:text-neutral-400 max-w-sm mb-8">
+            <p className="text-neutral-400 max-w-sm mb-8">
               Thank you for reaching out. I will get back to you as soon as possible.
             </p>
             <Button onClick={() => setIsSubmitted(false)}>
@@ -82,7 +82,7 @@ export default function Contact() {
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-neutral-600 dark:text-neutral-400 mb-2">
+                <label htmlFor="name" className="block text-sm font-medium text-neutral-400 mb-2">
                   Name
                 </label>
                 <Input
@@ -98,7 +98,7 @@ export default function Contact() {
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-neutral-600 dark:text-neutral-400 mb-2">
+                <label htmlFor="email" className="block text-sm font-medium text-neutral-400 mb-2">
                   Email
                 </label>
                 <Input
@@ -115,7 +115,7 @@ export default function Contact() {
             </div>
 
             <div>
-              <label htmlFor="message" className="block text-sm font-medium text-neutral-600 dark:text-neutral-400 mb-2">
+              <label htmlFor="message" className="block text-sm font-medium text-neutral-400 mb-2">
                 Message
               </label>
               <Textarea

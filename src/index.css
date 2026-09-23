@@ -1,14 +1,6 @@
 @import "tailwindcss";
-@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
-  --background: #fafafa; /* softer white */
-  --foreground: #171717; /* softer black */
-  --primary: #fbbf24; /* yellow-400 */
-  --primary-hover: #f59e0b; /* yellow-500 */
-}
-
-.dark {
   --background: #0a0a0a; /* dark gray instead of pure black */
   --foreground: #ededed; /* off-white instead of pure white */
   --primary: #fbbf24;
@@ -28,4 +20,14 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Terminal cursor blink */
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 1s step-start infinite;
 }

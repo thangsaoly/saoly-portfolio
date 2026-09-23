@@ -32,12 +32,12 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="w-full border-t border-neutral-200 dark:border-white/10 bg-white dark:bg-neutral-950 py-12 px-4 mt-auto">
+    <footer className="w-full border-t border-white/10 bg-neutral-950 py-12 px-4 mt-auto">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         
         <div className="flex flex-col items-center md:items-start">
           <span className="text-xl font-bold tracking-tighter text-foreground mb-2">TS.</span>
-          <p className="text-sm text-neutral-500 dark:text-neutral-400 text-center md:text-left">
+          <p className="text-sm text-neutral-400 text-center md:text-left">
             Crafting beautiful and functional web experiences.
           </p>
         </div>
@@ -47,7 +47,7 @@ export default function Footer() {
             href="https://github.com/thangsaoly"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2 rounded-full border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-600 dark:text-neutral-400 transition-colors"
+            className="p-2 rounded-full border border-neutral-800 bg-neutral-900 hover:hover:bg-neutral-800 text-neutral-400 transition-colors"
             aria-label="GitHub"
           >
             <Github size={18} />
@@ -56,14 +56,14 @@ export default function Footer() {
             href="https://linkedin.com/in/thang-saoly"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-2 rounded-full border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-600 dark:text-neutral-400 transition-colors"
+            className="p-2 rounded-full border border-neutral-800 bg-neutral-900 hover:hover:bg-neutral-800 text-neutral-400 transition-colors"
             aria-label="LinkedIn"
           >
             <Linkedin size={18} />
           </a>
           <a
             href="mailto:thangsaoly@example.com"
-            className="p-2 rounded-full border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 hover:bg-neutral-100 dark:hover:bg-neutral-800 text-neutral-600 dark:text-neutral-400 transition-colors"
+            className="p-2 rounded-full border border-neutral-800 bg-neutral-900 hover:hover:bg-neutral-800 text-neutral-400 transition-colors"
             aria-label="Email"
           >
             <Mail size={18} />
@@ -71,8 +71,8 @@ export default function Footer() {
         </div>
       </div>
       
-      <div className="max-w-6xl mx-auto mt-8 pt-8 border-t border-neutral-200 dark:border-white/5 text-center">
-        <p className="text-xs text-neutral-400 dark:text-neutral-500">
+      <div className="max-w-6xl mx-auto mt-8 pt-8 border-t border-white/5 text-center">
+        <p className="text-xs text-neutral-500">
           © {currentYear} Thang Saoly. All rights reserved.
         </p>
       </div>

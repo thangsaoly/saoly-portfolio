@@ -32,26 +32,31 @@ export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
 
   return (
-    <Section id="projects" title="Selected Work">
+    <Section 
+      id="projects" 
+      title="Selected Work" 
+      className="max-w-7xl xl:max-w-[1480px] 2xl:max-w-[1600px] px-4 sm:px-6 lg:px-8"
+    >
       <Dialog.Root open={!!selectedProject} onOpenChange={(open) => !open && setSelectedProject(null)}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {PROJECTS.map((project, idx) => (
             <motion.div 
               key={idx}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ scale: 1.02, y: -5 }}
+              whileHover={{ scale: 1.02, y: -5, transition: { duration: 0.2, ease: "easeOut" } }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1, type: "spring", stiffness: 300 }}
+              whileTap={{ scale: 0.99 }}
               onClick={() => setSelectedProject(project)}
               className={cn(
                 "group relative rounded-3xl overflow-hidden cursor-pointer transition-all border",
-                "bg-white dark:bg-neutral-900 border-neutral-200 dark:border-white/10 hover:border-primary/50 dark:hover:border-primary/50 shadow-sm hover:shadow-xl"
+                "bg-neutral-900 border-white/10 hover:hover:border-primary/50 shadow-sm hover:shadow-xl"
               )}
             >
               {/* Image / Card Header Placeholder */}
-              <div className="h-48 w-full bg-neutral-100 dark:bg-neutral-800 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-neutral-900 to-transparent z-10" />
+              <div className="h-48 w-full bg-neutral-800 relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 to-transparent z-10" />
                 <div className="absolute inset-0 flex items-center justify-center text-sm font-semibold tracking-wider text-neutral-400 uppercase">
                   Project Showcase
                 </div>
@@ -59,11 +64,11 @@ export default function Projects() {
 
               <div className="p-8 relative z-20">
                 <h3 className="text-2xl font-bold text-foreground mb-3">{project.title}</h3>
-                <p className="text-neutral-600 dark:text-neutral-400 mb-6 line-clamp-2">{project.description}</p>
+                <p className="text-neutral-400 mb-6 line-clamp-2">{project.description}</p>
                 
                 <div className="flex flex-wrap gap-2 mb-8">
                   {project.tech.map(t => (
-                    <span key={t} className="px-3 py-1 text-xs font-medium rounded-full bg-neutral-100 dark:bg-white/10 text-neutral-600 dark:text-neutral-300">
+                    <span key={t} className="px-3 py-1 text-xs font-medium rounded-full bg-white/10 text-neutral-300">
                       {t}
                     </span>
                   ))}
@@ -73,17 +78,17 @@ export default function Projects() {
                   {project.private ? (
                     <span
                       title="Private Repository — source code is not publicly available"
-                      className="p-2 rounded-full border border-neutral-200 dark:border-neutral-700 bg-neutral-50 dark:bg-white/5 text-neutral-400 dark:text-neutral-500 cursor-not-allowed flex items-center gap-1.5"
+                      className="p-2 rounded-full border border-neutral-700 bg-white/5 text-neutral-500 cursor-not-allowed flex items-center gap-1.5"
                     >
                       <Github size={20} />
                       <span className="text-xs font-medium pr-1">Private</span>
                     </span>
                   ) : (
-                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full border border-neutral-200 dark:border-none bg-neutral-50 dark:bg-white/5 hover:bg-neutral-100 dark:hover:bg-white/10 text-neutral-800 dark:text-white transition-colors">
+                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full border border-none bg-white/5 hover:hover:bg-white/10 text-white transition-colors">
                       <Github size={20} />
                     </a>
                   )}
-                  <a href={project.live} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full border border-neutral-200 dark:border-none bg-neutral-50 dark:bg-white/5 hover:bg-neutral-100 dark:hover:bg-white/10 text-neutral-800 dark:text-white transition-colors">
+                  <a href={project.live} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full border border-none bg-white/5 hover:hover:bg-white/10 text-white transition-colors">
                     <ExternalLink size={20} />
                   </a>
                 </div>
@@ -93,31 +98,31 @@ export default function Projects() {
         </div>
 
         <Dialog.Portal>
-          <Dialog.Overlay className="fixed inset-0 bg-black/40 dark:bg-black/60 backdrop-blur-sm z-50 animate-fade-in" />
+          <Dialog.Overlay className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 animate-fade-in" />
           <Dialog.Content className={cn(
             "fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-6 p-8 border shadow-2xl rounded-3xl focus:outline-none",
-            "bg-white dark:bg-neutral-950 border-neutral-200 dark:border-neutral-800 text-foreground animate-zoom-in"
+            "bg-neutral-950 border-neutral-800 text-foreground animate-zoom-in"
           )}>
             <div className="flex justify-between items-start">
               <Dialog.Title className="text-2xl font-bold tracking-tight">
                 {selectedProject?.title}
               </Dialog.Title>
               <Dialog.Close asChild>
-                <button className="p-1.5 rounded-full hover:bg-neutral-100 dark:hover:bg-white/10 transition-colors" aria-label="Close">
+                <button className="p-1.5 rounded-full hover:hover:bg-white/10 transition-colors" aria-label="Close">
                   <X size={20} />
                 </button>
               </Dialog.Close>
             </div>
 
-            <Dialog.Description className="text-neutral-600 dark:text-neutral-400 text-base leading-relaxed">
+            <Dialog.Description className="text-neutral-400 text-base leading-relaxed">
               {selectedProject?.longDescription}
             </Dialog.Description>
 
             <div>
-              <h4 className="text-sm font-semibold uppercase tracking-wider text-neutral-400 dark:text-neutral-500 mb-3">Technologies Used</h4>
+              <h4 className="text-sm font-semibold uppercase tracking-wider text-neutral-500 mb-3">Technologies Used</h4>
               <div className="flex flex-wrap gap-2">
                 {selectedProject?.tech.map(t => (
-                  <span key={t} className="px-3 py-1 text-xs font-semibold rounded-full bg-neutral-100 dark:bg-white/10 text-neutral-600 dark:text-neutral-300">
+                  <span key={t} className="px-3 py-1 text-xs font-semibold rounded-full bg-white/10 text-neutral-300">
                     {t}
                   </span>
                 ))}
@@ -126,7 +131,7 @@ export default function Projects() {
 
             <div className="flex gap-4 mt-2">
               {selectedProject?.private ? (
-                <span className="flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-medium border border-neutral-200 dark:border-neutral-700 text-neutral-400 dark:text-neutral-500 cursor-not-allowed select-none">
+                <span className="flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-medium border border-neutral-700 text-neutral-500 cursor-not-allowed select-none">
                   🔒 Private Repository
                 </span>
               ) : selectedProject?.githubFrontend ? (
