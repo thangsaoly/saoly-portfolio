@@ -43,6 +43,7 @@ import { LuLayers, LuWorkflow } from "react-icons/lu";
 const SKILL_CATEGORIES = [
   {
     title: "Frontend & Browser",
+    icon: Layout,
     skills: [
       { name: "React", icon: SiReact, color: "#61DAFB" },
       { name: "JavaScript (ES6+)", icon: SiJavascript, color: "#F7DF1E" },
@@ -56,6 +57,7 @@ const SKILL_CATEGORIES = [
   },
   {
     title: "Backend & Database",
+    icon: Server,
     skills: [
       { name: "Node.js", icon: SiNodedotjs, color: "#5FA04E" },
       { name: "Express.js", icon: SiExpress, color: "#EEEEEE" },
@@ -72,6 +74,7 @@ const SKILL_CATEGORIES = [
   },
   {
     title: "Mobile Development",
+    icon: Smartphone,
     skills: [
       { name: "Flutter", icon: SiFlutter, color: "#02569B" },
       { name: "Dart", icon: SiDart, color: "#0175C2" },
@@ -83,6 +86,7 @@ const SKILL_CATEGORIES = [
   },
   {
     title: "Tools, DevOps & Core Languages",
+    icon: Terminal,
     skills: [
       { name: "Figma", icon: SiFigma, color: "#F24E1E" },
       { name: "Docker", icon: SiDocker, color: "#2496ED" },
@@ -92,7 +96,6 @@ const SKILL_CATEGORIES = [
       { name: "C & C++", icon: SiCplusplus, color: "#00599C" },
       { name: "C#", icon: TbBrandCSharp, color: "#9B4F96" },
       { name: "Postman", icon: SiPostman, color: "#FF6C37" },
-      
     ],
   },
 ];
@@ -118,50 +121,78 @@ const itemVariants = {
 
 export default function Skills() {
   return (
-    <Section id="skills" kicker="stack" title="Technical Skills">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-        {SKILL_CATEGORIES.map((category, idx) => (
-          <motion.div 
-            key={idx}
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            className="flex flex-col"
-          >
-            <h3 className="text-xl font-semibold mb-4 text-foreground flex items-center gap-2">
-              <span className="w-8 h-[1px] bg-primary/50 block"></span>
-              {category.title}
-            </h3>
-            
-            <div className="flex flex-wrap gap-2.5">
-              {category.skills.map((skill) => {
-                const IconComponent = skill.icon;
-                return (
-                  <motion.span
-                    key={skill.name}
-                    variants={itemVariants}
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    transition={{ duration: 0.2, ease: "easeOut" }}
-                    className={cn(
-                      "group inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-sm font-medium tracking-wide border cursor-default transition-all duration-200",
-                      "bg-neutral-900/90 border-white/5",
-                      "text-neutral-300 hover:border-primary/50 hover:text-white shadow-sm hover:shadow-md hover:shadow-black/50"
-                    )}
-                  >
-                    <IconComponent 
-                      size={16} 
-                      className="transition-transform duration-200 group-hover:scale-110 flex-shrink-0"
-                      style={{ color: skill.color }}
-                      aria-hidden="true"
-                    />
-                    <span>{skill.name}</span>
-                  </motion.span>
-                );
-              })}
-            </div>
-          </motion.div>
-        ))}
+    <Section 
+      id="skills" 
+      kicker="stack" 
+      title="Technical Skills"
+      subtitle="The frameworks, languages, and development tools I build with daily."
+      className="max-w-7xl"
+    >
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+        {SKILL_CATEGORIES.map((category) => {
+          const CategoryIcon = category.icon || Layout;
+          return (
+            <motion.div 
+              key={category.title}
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-50px" }}
+              className={cn(
+                "group relative flex flex-col rounded-3xl border border-white/10 bg-neutral-900/50 backdrop-blur-sm",
+                "p-6 sm:p-8 transition-all duration-300",
+                "hover:border-primary/50 hover:bg-neutral-900/80 hover:shadow-2xl hover:shadow-primary/5"
+              )}
+            >
+              {/* Subtle ambient accent gradient on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-3xl pointer-events-none" />
+
+              {/* Card Header */}
+              <div className="relative z-10 flex items-center justify-between gap-4 mb-6 pb-4 border-b border-white/5">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-primary group-hover:border-primary/40 group-hover:bg-primary/10 transition-colors">
+                    <CategoryIcon size={18} />
+                  </div>
+                  <h3 className="text-lg sm:text-xl font-bold tracking-tight text-white">
+                    {category.title}
+                  </h3>
+                </div>
+
+                <span className="font-mono text-[10px] uppercase tracking-wider text-neutral-400 bg-white/5 px-2.5 py-1 rounded-full border border-white/10">
+                  {category.skills.length} skills
+                </span>
+              </div>
+              
+              {/* Chips */}
+              <div className="relative z-10 flex flex-wrap gap-2.5">
+                {category.skills.map((skill) => {
+                  const IconComponent = skill.icon;
+                  return (
+                    <motion.span
+                      key={skill.name}
+                      variants={itemVariants}
+                      whileHover={{ scale: 1.05, y: -2 }}
+                      transition={{ duration: 0.2, ease: "easeOut" }}
+                      className={cn(
+                        "group/chip inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-medium tracking-wide border cursor-default transition-all duration-200",
+                        "bg-neutral-950/80 border-white/[0.08]",
+                        "text-neutral-300 hover:border-primary/50 hover:bg-neutral-900 hover:text-white shadow-sm hover:shadow-md hover:shadow-black/50"
+                      )}
+                    >
+                      <IconComponent 
+                        size={16} 
+                        className="transition-transform duration-200 group-hover/chip:scale-110 flex-shrink-0"
+                        style={{ color: skill.color }}
+                        aria-hidden="true"
+                      />
+                      <span>{skill.name}</span>
+                    </motion.span>
+                  );
+                })}
+              </div>
+            </motion.div>
+          );
+        })}
       </div>
     </Section>
   );
