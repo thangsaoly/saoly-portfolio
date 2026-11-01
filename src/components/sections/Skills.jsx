@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Layout, Server, Smartphone, Terminal } from "lucide-react";
 import { Section } from "../ui/Section";
 import { cn } from "../../lib/utils";
 import { 
@@ -22,6 +23,12 @@ import {
   SiJetpackcompose, 
   SiFlutter,
   SiDart,
+  SiPython,
+  SiTelegram,
+  SiDocker,
+  SiGithubactions,
+  SiCplusplus,
+  SiGnubash,
   SiGit, 
   SiGithub, 
   SiFigma, 
@@ -30,20 +37,21 @@ import {
   SiLinux 
 } from "react-icons/si";
 import { FaJava } from "react-icons/fa6";
-import { TbDatabase, TbApi, TbPlugConnected, TbBrandCSharp } from "react-icons/tb";
+import { TbDatabase, TbApi, TbPlugConnected, TbBrandCSharp, TbPuzzle, TbSpider } from "react-icons/tb";
 import { LuLayers, LuWorkflow } from "react-icons/lu";
 
 const SKILL_CATEGORIES = [
   {
-    title: "Frontend",
+    title: "Frontend & Browser",
     skills: [
       { name: "React", icon: SiReact, color: "#61DAFB" },
       { name: "JavaScript (ES6+)", icon: SiJavascript, color: "#F7DF1E" },
       { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+      { name: "Vite", icon: SiVite, color: "#646CFF" },
       { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
       { name: "HTML5/CSS3", icon: SiHtml5, color: "#E34F26" },
       { name: "Framer Motion", icon: SiFramer, color: "#0055FF" },
-      { name: "Vite", icon: SiVite, color: "#646CFF" },
+      { name: "WXT / Browser Extensions", icon: TbPuzzle, color: "#F59E0B" },
     ],
   },
   {
@@ -53,14 +61,13 @@ const SKILL_CATEGORIES = [
       { name: "Express.js", icon: SiExpress, color: "#EEEEEE" },
       { name: "Java", icon: FaJava, color: "#ED8B00" },
       { name: "Spring Boot", icon: SiSpringboot, color: "#6DB33F" },
+      { name: "Python", icon: SiPython, color: "#3776AB" },
       { name: "REST APIs", icon: TbApi, color: "#10B981" },
       { name: "JWT", icon: SiJsonwebtokens, color: "#D63AFF" },
       { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
       { name: "MySQL", icon: SiMysql, color: "#4479A1" },
       { name: "SQLite", icon: SiSqlite, color: "#29B5E8" },
-      { name: "Prisma", icon: SiPrisma, color: "#2DD4BF" },
       { name: "Sequelize", icon: SiSequelize, color: "#52B0E7" },
-      { name: "JDBC", icon: TbDatabase, color: "#F59E0B" },
     ],
   },
   {
@@ -72,19 +79,20 @@ const SKILL_CATEGORIES = [
       { name: "Kotlin", icon: SiKotlin, color: "#7F52FF" },
       { name: "Jetpack Compose", icon: SiJetpackcompose, color: "#4285F4" },
       { name: "MVVM", icon: LuLayers, color: "#A855F7" },
-      { name: "Coroutines", icon: LuWorkflow, color: "#EC4899" },
-      { name: "Hilt", icon: TbPlugConnected, color: "#F43F5E" },
     ],
   },
   {
-    title: "Tools & Others",
+    title: "Tools, DevOps & Core Languages",
     skills: [
+      { name: "Figma", icon: SiFigma, color: "#F24E1E" },
+      { name: "Docker", icon: SiDocker, color: "#2496ED" },
+      { name: "Linux", icon: SiLinux, color: "#FCC624" },
       { name: "Git", icon: SiGit, color: "#F05032" },
       { name: "GitHub", icon: SiGithub, color: "#FFFFFF" },
-      { name: "Figma", icon: SiFigma, color: "#F24E1E" },
-      { name: "Postman", icon: SiPostman, color: "#FF6C37" },
-      { name: "Linux", icon: SiLinux, color: "#FCC624" },
+      { name: "C & C++", icon: SiCplusplus, color: "#00599C" },
       { name: "C#", icon: TbBrandCSharp, color: "#9B4F96" },
+      { name: "Postman", icon: SiPostman, color: "#FF6C37" },
+      
     ],
   },
 ];

@@ -9,7 +9,7 @@ const EXPERIENCE_DATA = [
     type: "education",
     title: "Bachelor of Computer Science",
     organization: "Cambodia Academy of Digital Technology",
-    period: "2024 — 2028",
+    period: "2024 — Present",
     story: "Where the foundation was poured — software engineering, web, and mobile, learned as much in editors as in lectures.",
     description: "Focus on software engineering, web development, and mobile development.",
   },
@@ -19,7 +19,7 @@ const EXPERIENCE_DATA = [
     title: "Full Stack Developer",
     organization: "Freelance",
     period: "2026 — Present",
-    story: "Owning the whole line: database schema to the last pixel on screen.",
+    story: "From raw SQL in the dark to smooth light on glass.",
     description: "Developing robust web applications using React, Node.js, and Java. Designing efficient database schemas and implementing secure authentication flows.",
   },
   {
@@ -29,7 +29,7 @@ const EXPERIENCE_DATA = [
     organization: "Freelance",
     period: "2026 — Present",
     story: "Native Android, where every interaction gets the polish it deserves.",
-    description: "Developing Android applications using Kotlin and Jetpack Compose.",
+    description: "Developing Android applications using Flutter or Kotlin and Jetpack Compose.",
   },
 ];
 

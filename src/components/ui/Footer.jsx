@@ -76,7 +76,7 @@ export default function Footer() {
           © {currentYear} Thang Saoly. All rights reserved.
         </p>
         <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-neutral-600">
-          Designed &amp; built by hand — React · Vite · Tailwind
+          Designed &amp; built by SAOLY – React • Vite • Tailwind
         </p>
       </div>
     </footer>
