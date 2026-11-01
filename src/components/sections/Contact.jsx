@@ -60,10 +60,11 @@ export default function Contact() {
   };
 
   return (
-    <Section 
-      id="contact" 
-      title="Get In Touch" 
-      subtitle="Have a question or want to work together? Drop me a message below."
+    <Section
+      id="contact"
+      kicker="say hello"
+      title="Let's Build Something"
+      subtitle="Have a question, a project, or a role in mind? I reply fast — drop me a message below."
       className="max-w-4xl"
     >
       <div className="relative border border-neutral-800 bg-neutral-900/50 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-xl overflow-hidden">

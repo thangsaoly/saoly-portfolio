@@ -12,14 +12,14 @@
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
   --color-primary-hover: var(--primary-hover);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
 }
 
 /* Terminal cursor blink */
@@ -30,4 +30,44 @@ body {
 
 .animate-blink {
   animation: blink 1s step-start infinite;
+}
+
+/* Availability status pulse — amber halo expanding from the dot */
+@keyframes status-pulse {
+  0%   { box-shadow: 0 0 0 0 rgb(251 191 36 / 0.5); }
+  70%  { box-shadow: 0 0 0 6px rgb(251 191 36 / 0); }
+  100% { box-shadow: 0 0 0 0 rgb(251 191 36 / 0); }
+}
+
+.animate-status {
+  animation: status-pulse 2s ease-out infinite;
+}
+
+/* Scroll cue fade */
+@keyframes scroll-cue {
+  0%, 100% { opacity: 0.35; transform: translateY(0); }
+  50%      { opacity: 0.8; transform: translateY(4px); }
+}
+
+.animate-scroll-cue {
+  animation: scroll-cue 2.2s ease-in-out infinite;
+}
+
+/* Film-grain texture — static SVG turbulence, painted once, no scroll repaint */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-blink,
+  .animate-status,
+  .animate-scroll-cue {
+    animation: none;
+  }
 }

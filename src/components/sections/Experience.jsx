@@ -1,79 +1,79 @@
-import { motion } from "framer-motion";
 import { Section } from "../ui/Section";
+import { Reveal } from "../ui/Reveal";
 import { Briefcase, GraduationCap } from "lucide-react";
 import { cn } from "../../lib/utils";
 
 const EXPERIENCE_DATA = [
   {
     id: 1,
-    type: "work",
-    title: "Full Stack Developer",
-    organization: "Freelance",
-    period: "2026 - Present",
-    description: "Developing robust web applications using React, Node.js, and Java. Designing efficient database schemas and implementing secure authentication flows.",
-  },
-  {
-    id: 2,
     type: "education",
     title: "Bachelor of Computer Science",
     organization: "Cambodia Academy of Digital Technology",
-    period: "2024 - 2028",
+    period: "2024 — 2028",
+    story: "Where the foundation was poured — software engineering, web, and mobile, learned as much in editors as in lectures.",
     description: "Focus on software engineering, web development, and mobile development.",
+  },
+  {
+    id: 2,
+    type: "work",
+    title: "Full Stack Developer",
+    organization: "Freelance",
+    period: "2026 — Present",
+    story: "Owning the whole line: database schema to the last pixel on screen.",
+    description: "Developing robust web applications using React, Node.js, and Java. Designing efficient database schemas and implementing secure authentication flows.",
   },
   {
     id: 3,
     type: "work",
     title: "Android Developer",
     organization: "Freelance",
-    period: "2026 - Present",
+    period: "2026 — Present",
+    story: "Native Android, where every interaction gets the polish it deserves.",
     description: "Developing Android applications using Kotlin and Jetpack Compose.",
-  }
+  },
 ];
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-    },
-  },
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { 
-    opacity: 1, 
-    y: 0,
-    transition: { duration: 0.45, ease: "easeOut" }
-  },
-};
 
 export default function Experience() {
   return (
-    <Section id="experience" title="Experience & Education">
-      <motion.div 
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-50px" }}
-        className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto"
-      >
-        {EXPERIENCE_DATA.map((item) => {
+    <Section
+      id="experience"
+      kicker="changelog"
+      title="Experience & Education"
+      subtitle="The commits that got me here — and the ones still in progress."
+    >
+      <div className="relative max-w-3xl mx-auto">
+        {/* Timeline spine */}
+        <div
+          aria-hidden="true"
+          className="absolute left-3 top-3 bottom-3 w-px bg-gradient-to-b from-primary/60 via-white/10 to-transparent"
+        />
+
+        {EXPERIENCE_DATA.map((item, i) => {
           const isWork = item.type === "work";
-          
+
           return (
-            <motion.div 
+            <Reveal
               key={item.id}
-              variants={cardVariants}
-              whileHover={{ y: -6, transition: { duration: 0.2, ease: "easeOut" } }}
-              className={cn(
-                "group relative flex flex-col justify-between p-6 sm:p-7 rounded-2xl border transition-all duration-300",
-                "bg-neutral-900/60 border-white/5 backdrop-blur-sm",
-                "hover:border-primary/40 hover:bg-neutral-900/90 hover:shadow-xl hover:shadow-primary/5"
-              )}
+              delay={i * 0.08}
+              className="relative pl-10 sm:pl-14 pb-10 last:pb-0"
             >
-              <div>
+              {/* Node */}
+              <span
+                aria-hidden="true"
+                className={cn(
+                  "absolute left-3 top-8 -translate-x-1/2 w-3 h-3 rounded-full",
+                  "bg-primary ring-4 ring-primary/15",
+                  "shadow-[0_0_14px_rgba(251,191,36,0.55)]"
+                )}
+              />
+
+              <div
+                className={cn(
+                  "group relative flex flex-col p-6 sm:p-7 rounded-2xl border transition-all duration-300",
+                  "bg-neutral-900/60 border-white/5 backdrop-blur-sm",
+                  "hover:border-primary/40 hover:bg-neutral-900/90 hover:shadow-xl hover:shadow-primary/5"
+                )}
+              >
                 {/* Header: Category Badge + Period Tag */}
                 <div className="flex items-center justify-between gap-2 mb-5">
                   <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-xs font-medium text-neutral-300">
@@ -90,7 +90,7 @@ export default function Experience() {
                     )}
                   </span>
 
-                  <span className="text-xs font-semibold tracking-wide px-2.5 py-1 rounded-lg bg-primary/10 text-primary border border-primary/20">
+                  <span className="font-mono text-xs tracking-wide px-2.5 py-1 rounded-lg bg-primary/10 text-primary border border-primary/20">
                     {item.period}
                   </span>
                 </div>
@@ -105,21 +105,20 @@ export default function Experience() {
                   {item.organization}
                 </h4>
 
+                {/* Narrative line */}
+                <p className="text-[15px] text-neutral-300 leading-relaxed mb-3">
+                  {item.story}
+                </p>
+
                 {/* Description */}
-                <p className="text-sm text-neutral-400 leading-relaxed">
+                <p className="text-sm text-neutral-500 leading-relaxed">
                   {item.description}
                 </p>
               </div>
-
-              {/* Bottom decorative accent line */}
-              <div className="mt-6 pt-4 border-t border-white/5 flex items-center justify-between text-xs text-neutral-500">
-                <span>{isWork ? "Professional" : "Academic"}</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-primary/40 group-hover:bg-primary transition-colors" />
-              </div>
-            </motion.div>
+            </Reveal>
           );
         })}
-      </motion.div>
+      </div>
     </Section>
   );
 }

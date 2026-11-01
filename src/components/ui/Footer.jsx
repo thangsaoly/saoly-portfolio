@@ -62,7 +62,7 @@ export default function Footer() {
             <Linkedin size={18} />
           </a>
           <a
-            href="mailto:thangsaoly@example.com"
+            href="mailto:thangsaoly987@gmail.com"
             className="p-2 rounded-full border border-neutral-800 bg-neutral-900 hover:hover:bg-neutral-800 text-neutral-400 transition-colors"
             aria-label="Email"
           >
@@ -71,9 +71,12 @@ export default function Footer() {
         </div>
       </div>
       
-      <div className="max-w-6xl mx-auto mt-8 pt-8 border-t border-white/5 text-center">
+      <div className="max-w-6xl mx-auto mt-8 pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-2 text-center">
         <p className="text-xs text-neutral-500">
           © {currentYear} Thang Saoly. All rights reserved.
+        </p>
+        <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-neutral-600">
+          Designed &amp; built by hand — React · Vite · Tailwind
         </p>
       </div>
     </footer>

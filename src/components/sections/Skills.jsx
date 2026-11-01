@@ -12,12 +12,16 @@ import {
   SiNodedotjs, 
   SiExpress, 
   SiSpringboot, 
+  SiPostgresql,
   SiMysql, 
   SiSqlite, 
+  SiPrisma,
   SiSequelize, 
   SiAndroid, 
   SiKotlin, 
   SiJetpackcompose, 
+  SiFlutter,
+  SiDart,
   SiGit, 
   SiGithub, 
   SiFigma, 
@@ -26,7 +30,7 @@ import {
   SiLinux 
 } from "react-icons/si";
 import { FaJava } from "react-icons/fa6";
-import { TbDatabase, TbApi, TbPlugConnected } from "react-icons/tb";
+import { TbDatabase, TbApi, TbPlugConnected, TbBrandCSharp } from "react-icons/tb";
 import { LuLayers, LuWorkflow } from "react-icons/lu";
 
 const SKILL_CATEGORIES = [
@@ -49,8 +53,12 @@ const SKILL_CATEGORIES = [
       { name: "Express.js", icon: SiExpress, color: "#EEEEEE" },
       { name: "Java", icon: FaJava, color: "#ED8B00" },
       { name: "Spring Boot", icon: SiSpringboot, color: "#6DB33F" },
+      { name: "REST APIs", icon: TbApi, color: "#10B981" },
+      { name: "JWT", icon: SiJsonwebtokens, color: "#D63AFF" },
+      { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
       { name: "MySQL", icon: SiMysql, color: "#4479A1" },
       { name: "SQLite", icon: SiSqlite, color: "#29B5E8" },
+      { name: "Prisma", icon: SiPrisma, color: "#2DD4BF" },
       { name: "Sequelize", icon: SiSequelize, color: "#52B0E7" },
       { name: "JDBC", icon: TbDatabase, color: "#F59E0B" },
     ],
@@ -58,6 +66,8 @@ const SKILL_CATEGORIES = [
   {
     title: "Mobile Development",
     skills: [
+      { name: "Flutter", icon: SiFlutter, color: "#02569B" },
+      { name: "Dart", icon: SiDart, color: "#0175C2" },
       { name: "Android", icon: SiAndroid, color: "#3DDC84" },
       { name: "Kotlin", icon: SiKotlin, color: "#7F52FF" },
       { name: "Jetpack Compose", icon: SiJetpackcompose, color: "#4285F4" },
@@ -72,10 +82,9 @@ const SKILL_CATEGORIES = [
       { name: "Git", icon: SiGit, color: "#F05032" },
       { name: "GitHub", icon: SiGithub, color: "#FFFFFF" },
       { name: "Figma", icon: SiFigma, color: "#F24E1E" },
-      { name: "REST APIs", icon: TbApi, color: "#10B981" },
-      { name: "JWT", icon: SiJsonwebtokens, color: "#D63AFF" },
       { name: "Postman", icon: SiPostman, color: "#FF6C37" },
       { name: "Linux", icon: SiLinux, color: "#FCC624" },
+      { name: "C#", icon: TbBrandCSharp, color: "#9B4F96" },
     ],
   },
 ];
@@ -101,7 +110,7 @@ const itemVariants = {
 
 export default function Skills() {
   return (
-    <Section id="skills" title="Technical Skills">
+    <Section id="skills" kicker="stack" title="Technical Skills">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
         {SKILL_CATEGORIES.map((category, idx) => (
           <motion.div 

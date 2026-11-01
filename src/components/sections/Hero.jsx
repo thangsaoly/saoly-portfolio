@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Terminal } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { cn } from "../../lib/utils";
 import { Button } from "../ui/Button";
 import { MatrixBackground } from "../ui/MatrixBackground";
@@ -75,20 +75,22 @@ export default function Hero() {
             transition={{ duration: 0.7, ease: "easeOut" }}
             className="flex flex-col items-start text-left"
           >
-            {/* Terminal Badge */}
-            <motion.div 
+            {/* Availability status badge */}
+            <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.15 }}
               className={cn(
                 "inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full",
-                "bg-white/5 border border-white/10 backdrop-blur-md mb-6"
+                "bg-primary/[0.07] border border-primary/20 backdrop-blur-md mb-6"
               )}
             >
-              <Terminal size={15} className="text-primary" />
-              <span className="text-xs sm:text-sm font-medium tracking-wide text-neutral-300">
-                Journey toward perfect software.
-                <span className="inline-block w-px h-3.5 bg-primary ml-0.5 align-middle animate-blink" />
+              <span className="w-2 h-2 rounded-full bg-primary animate-status" />
+              <span className="font-mono text-[11px] sm:text-xs font-medium tracking-[0.14em] uppercase text-primary">
+                Open for Work
+              </span>
+              <span className="hidden sm:inline text-xs text-neutral-400">
+                Internships · Part-time · Freelance
               </span>
             </motion.div>
 
@@ -125,6 +127,32 @@ export default function Hero() {
                 </a>
               </Button>
             </div>
+
+            {/* Quick links */}
+            <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-xs uppercase tracking-[0.15em] text-neutral-500">
+              <a
+                href="https://github.com/thangsaoly"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 transition-colors hover:text-primary"
+              >
+                GitHub <ArrowUpRight size={13} />
+              </a>
+              <a
+                href="https://linkedin.com/in/thang-saoly"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 transition-colors hover:text-primary"
+              >
+                LinkedIn <ArrowUpRight size={13} />
+              </a>
+              <a
+                href="#contact"
+                className="inline-flex items-center gap-1 transition-colors hover:text-primary"
+              >
+                Email <ArrowUpRight size={13} />
+              </a>
+            </div>
           </motion.div>
 
           {/* Page 2 (Right): Behind the Code */}
@@ -146,6 +174,9 @@ export default function Hero() {
               <p>
                 I approach every project with a focus on clean UI/UX, strong architecture, and rapid prototyping. Whether I'm designing interfaces in Figma or writing scalable code, I am committed to delivering polished, effective solutions.
               </p>
+              <p className="font-mono text-sm sm:text-base text-primary/90 border-l-2 border-primary/30 pl-4">
+                // I'm open to internships, part-time roles, and selected freelance projects — if your team is building something serious, let's talk.
+              </p>
             </div>
 
             {/* Stat Cards Grid */}
@@ -159,6 +190,15 @@ export default function Hero() {
 
         </div>
       </div>
+
+      {/* Scroll cue — desktop only */}
+      <a
+        href="#skills"
+        aria-label="Scroll to skills"
+        className="hidden lg:flex absolute bottom-7 right-8 z-10 items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-neutral-500 hover:text-primary transition-colors animate-scroll-cue"
+      >
+        Scroll <span aria-hidden="true">↓</span>
+      </a>
     </section>
   );
 }
