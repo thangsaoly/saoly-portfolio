@@ -9,8 +9,6 @@ import Contact from "./components/sections/Contact.jsx";
 export default function App() {
   return (
     <>
-      {/* Film-grain texture over everything — static, pointer-events-none, no scroll cost */}
-      <div aria-hidden="true" className="noise-overlay" />
       <Header />
       <main className="bg-background min-h-screen selection:bg-primary selection:text-black">
         <Hero />

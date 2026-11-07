@@ -16,7 +16,6 @@ import {
   SiPostgresql,
   SiMysql, 
   SiSqlite, 
-  SiPrisma,
   SiSequelize, 
   SiAndroid, 
   SiKotlin, 
@@ -24,21 +23,16 @@ import {
   SiFlutter,
   SiDart,
   SiPython,
-  SiTelegram,
   SiDocker,
-  SiGithubactions,
-  SiCplusplus,
-  SiGnubash,
   SiGit, 
   SiGithub, 
   SiFigma, 
-  SiJsonwebtokens, 
   SiPostman, 
   SiLinux 
 } from "react-icons/si";
 import { FaJava } from "react-icons/fa6";
-import { TbDatabase, TbApi, TbPlugConnected, TbBrandCSharp, TbPuzzle, TbSpider } from "react-icons/tb";
-import { LuLayers, LuWorkflow } from "react-icons/lu";
+import { TbApi, TbPuzzle } from "react-icons/tb";
+import { LuLayers } from "react-icons/lu";
 
 const SKILL_CATEGORIES = [
   {
@@ -64,8 +58,6 @@ const SKILL_CATEGORIES = [
       { name: "Java", icon: FaJava, color: "#ED8B00" },
       { name: "Spring Boot", icon: SiSpringboot, color: "#6DB33F" },
       { name: "Python", icon: SiPython, color: "#3776AB" },
-      { name: "REST APIs", icon: TbApi, color: "#10B981" },
-      { name: "JWT", icon: SiJsonwebtokens, color: "#D63AFF" },
       { name: "PostgreSQL", icon: SiPostgresql, color: "#4169E1" },
       { name: "MySQL", icon: SiMysql, color: "#4479A1" },
       { name: "SQLite", icon: SiSqlite, color: "#29B5E8" },
@@ -85,7 +77,7 @@ const SKILL_CATEGORIES = [
     ],
   },
   {
-    title: "Tools, DevOps & Core Languages",
+    title: "Tools & DevOps",
     icon: Terminal,
     skills: [
       { name: "Figma", icon: SiFigma, color: "#F24E1E" },
@@ -93,9 +85,8 @@ const SKILL_CATEGORIES = [
       { name: "Linux", icon: SiLinux, color: "#FCC624" },
       { name: "Git", icon: SiGit, color: "#F05032" },
       { name: "GitHub", icon: SiGithub, color: "#FFFFFF" },
-      { name: "C & C++", icon: SiCplusplus, color: "#00599C" },
-      { name: "C#", icon: TbBrandCSharp, color: "#9B4F96" },
       { name: "Postman", icon: SiPostman, color: "#FF6C37" },
+      { name: "Swagger", icon: TbApi, color: "#10B981" },
     ],
   },
 ];
